@@ -1,0 +1,20 @@
+import dotenv from "dotenv";
+import express from "express";
+import cors from "cors";
+import mongoose from "mongoose";
+
+dotenv.config();
+
+const app = express();
+
+const port = process.env.PORT || 3000;
+
+app.use(express.json());
+app.use(cors());
+
+app.listen(port, () => console.log(`Server is listening at port ${port}`));
+
+mongoose
+	.connect(process.env.ATLAS_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+	.then(() => console.log("Conneted to mongodb"))
+	.catch((err) => console.log(err));
