@@ -62,11 +62,22 @@ export const loginUser = async (req, res) => {
 
 export const findUser = async (req, res) => {
 	let userId = req.params.userId;
-
 	try {
 		let user = await UserModel.findById(userId);
 		if (!user) return res.status(400).json({ success: false, message: "No user found" });
 
 		res.status(200).json({ success: true, ...user });
-	} catch (error) {}
+	} catch (error) {
+		res.status(500).json(error);
+	}
+};
+
+export const getUsers = async (req, res) => {
+	try {
+		let users = await UserModel.find();
+
+		res.status(200).json({ success: true, data: users });
+	} catch (error) {
+		res.status(500).json(error);
+	}
 };
