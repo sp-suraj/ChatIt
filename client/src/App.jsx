@@ -21,7 +21,7 @@ const router = createBrowserRouter([
 ]);
 function App() {
 	return (
-		<div>
+		<div className="w-full h-screen text-white bg-zinc-600">
 			<Header />
 			<Outlet />
 		</div>
