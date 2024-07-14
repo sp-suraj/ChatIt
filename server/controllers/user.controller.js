@@ -18,7 +18,7 @@ export const registerUser = async (req, res) => {
 
 		if (user) return res.status(400).json({ success: false, message: "Email already exists" });
 		if (!email || !validator?.isEmail(email)) return res.status(400).json({ success: false, message: "Email is invalid" });
-		if (!password || !validator?.isStrongPassword(password)) return res.status(400).json({ success: false, message: "Password is invalid" });
+		if (!password || !validator?.isStrongPassword(password)) return res.status(400).json({ success: false, message: "Password is weak" });
 		if (!name) return res.status(400).json({ success: false, message: "Name is required" });
 
 		user = new UserModel({ email, password, name });
