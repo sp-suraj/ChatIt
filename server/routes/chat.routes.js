@@ -8,7 +8,7 @@ router.get("/:userId", allUserChats);
 router.get("/find/:firstId/:secondId", findChat);
 
 router.get("/", async (req, res, next) => {
-	res.send("All user routes");
+	res.send("All chat routes");
 });
 
 export default router;
